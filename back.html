@@ -1,0 +1,110 @@
+<script setup>
+    import { ref } from "vue";
+    import { RouterLink, RouterView } from "vue-router";
+    
+    // State to handle mobile menu visibility
+    const isMenuOpen = ref(false);
+    </script>
+    
+    <template>
+      <header class="bg-white py-4 shadow-md shadow-gray-600">
+        <div class="container mx-auto flex items-center justify-between px-4 md:px-0">
+          <!-- Logo and Site Name -->
+          <RouterLink to="/" class="logo text-lg text-gray-600 font-semibold flex items-center">
+        <img src="/cphlogo.png" alt="Cordova Pet Hub Logo" class="w-24 h-24 object-cover mr-3" />
+        Cordova Pet Hub
+      </RouterLink>
+    
+          <!-- Mobile Menu Button -->
+          <button
+            @click="isMenuOpen = !isMenuOpen"
+            class="md:hidden text-gray-600 focus:outline-none"
+            aria-label="Toggle menu"
+          >
+            <span class="material-symbols-outlined">menu</span>
+          </button>
+    
+          <!-- Navigation Links -->
+          <nav
+            :class="['flex-col md:flex-row md:flex', isMenuOpen ? 'flex' : 'hidden']"
+            class="absolute md:static top-16 left-0 w-full md:w-auto bg-white md:bg-transparent shadow-md md:shadow-none z-10 items-center justify-center text-center mt-1"
+          >
+            <RouterLink
+              to="/browse"
+              class="text-md font-semibold text-gray-600 p-4 md:py-0 md:px-6 hover:bg-gray-600 rounded-lg hover:text-white transform transition-transform duration-500 hover:scale-105"
+            >Browse Pet</RouterLink>
+            <RouterLink
+              to="/addpet"
+              class="text-md font-semibold text-gray-600 p-4 md:py-0 md:px-6 hover:bg-gray-600 rounded-lg hover:text-white transform transition-transform duration-500 hover:scale-105"
+            >Add Pet</RouterLink>
+            <RouterLink
+              to="/lostlist"
+              class="text-md font-semibold text-gray-600 p-4 md:py-0 md:px-6 hover:bg-gray-600 rounded-lg hover:text-white transform transition-transform duration-500 hover:scale-105"
+            >Lost And Found</RouterLink>
+            <RouterLink
+              to="/about"
+              class="text-md font-semibold text-gray-600 p-4 md:py-0 md:px-6 hover:bg-gray-600 rounded-lg hover:text-white transform transition-transform duration-500 hover:scale-105"
+            >About</RouterLink>
+            <RouterLink
+              to="/forum"
+              class="text-md font-semibold text-gray-600 p-4 md:py-0 md:px-6 hover:bg-gray-600 rounded-lg hover:text-white transform transition-transform duration-500 hover:scale-105"
+            >Forum</RouterLink>
+            <RouterLink
+              to="/contact"
+              class="text-md font-semibold text-gray-600 p-4 md:py-0 md:px-6 hover:bg-gray-600 rounded-lg hover:text-white transform transition-transform duration-500 hover:scale-105"
+            >Contact Us</RouterLink>
+            <RouterLink
+              to="/donations"
+              class="text-md font-semibold text-gray-600 p-4 md:py-0 md:px-6 hover:bg-gray-600 rounded-lg hover:text-white transform transition-transform duration-500 hover:scale-105"
+            >Donations</RouterLink>
+          </nav>
+           
+    
+          <!-- Authentication Links -->
+          <div class="hidden md:flex items-center space-x-4">
+      <RouterLink
+        to="/login"
+        class="bg-slate-500 text-white font-semibold py-2 px-4 rounded text-sm flex items-center space-x-2 shadow shadow-lg shadow-gray-700 transform transition-transform duration-300 hover:scale-105"
+      >
+        <span>Login</span>
+        <span class="material-symbols-outlined">login</span>
+      </RouterLink>
+      <RouterLink
+        to="/register"
+        class="bg-slate-500 text-white font-semibold py-2 px-4 rounded text-sm flex items-center space-x-2 shadow shadow-lg shadow-gray-700 transform transition-transform duration-300 hover:scale-105"
+      >
+        <span>Register</span>
+        <span class="material-symbols-outlined">app_registration</span>
+      </RouterLink>
+    </div>
+    
+        </div>
+    
+        <!-- Mobile Authentication Links -->
+        <div
+          :class="[isMenuOpen ? 'flex' : 'hidden']"
+          class="flex-col md:hidden bg-white shadow-md mt-2 space-y-4 p-16"
+        >
+          <RouterLink
+            to="/login"
+            class="bg-slate-500 text-white font-semibold py-2 px-4 rounded text-sm w-full text-center"
+          >Login</RouterLink>
+          <RouterLink
+            to="/register"
+            class="bg-slate-500 text-white font-semibold py-2 px-4 rounded text-sm w-full text-center"
+          >Register</RouterLink>
+        </div>
+      </header>
+    
+      <RouterView />
+    </template>
+    
+    <style scoped>
+    nav {
+      font-family: "Inconsolata", monospace;
+    }
+    .logo {
+      font-family: cursive;
+    }
+    </style>
+    
